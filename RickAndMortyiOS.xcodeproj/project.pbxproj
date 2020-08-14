@@ -15,6 +15,7 @@
 		656D0FA224E6ED5A00A74E51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 656D0FA024E6ED5A00A74E51 /* LaunchScreen.storyboard */; };
 		656D0FAD24E6ED5A00A74E51 /* RickAndMortyiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0FAC24E6ED5A00A74E51 /* RickAndMortyiOSTests.swift */; };
 		656D0FB824E6ED5A00A74E51 /* RickAndMortyiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0FB724E6ED5A00A74E51 /* RickAndMortyiOSUITests.swift */; };
+		656D0FC624E6ED8C00A74E51 /* RickAndMortyCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0FC524E6ED8C00A74E51 /* RickAndMortyCharacter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		656D0FB324E6ED5A00A74E51 /* RickAndMortyiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		656D0FB724E6ED5A00A74E51 /* RickAndMortyiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyiOSUITests.swift; sourceTree = "<group>"; };
 		656D0FB924E6ED5A00A74E51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		656D0FC524E6ED8C00A74E51 /* RickAndMortyCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyCharacter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				656D0F9524E6ED5700A74E51 /* AppDelegate.swift */,
 				656D0F9724E6ED5700A74E51 /* SceneDelegate.swift */,
 				656D0F9924E6ED5700A74E51 /* ViewController.swift */,
+				656D0FC524E6ED8C00A74E51 /* RickAndMortyCharacter.swift */,
 				656D0F9B24E6ED5700A74E51 /* Main.storyboard */,
 				656D0F9E24E6ED5A00A74E51 /* Assets.xcassets */,
 				656D0FA024E6ED5A00A74E51 /* LaunchScreen.storyboard */,
@@ -261,6 +264,7 @@
 			files = (
 				656D0F9A24E6ED5700A74E51 /* ViewController.swift in Sources */,
 				656D0F9624E6ED5700A74E51 /* AppDelegate.swift in Sources */,
+				656D0FC624E6ED8C00A74E51 /* RickAndMortyCharacter.swift in Sources */,
 				656D0F9824E6ED5700A74E51 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
