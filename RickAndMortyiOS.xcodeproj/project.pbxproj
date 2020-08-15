@@ -16,6 +16,9 @@
 		656D0FAD24E6ED5A00A74E51 /* RickAndMortyiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0FAC24E6ED5A00A74E51 /* RickAndMortyiOSTests.swift */; };
 		656D0FB824E6ED5A00A74E51 /* RickAndMortyiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0FB724E6ED5A00A74E51 /* RickAndMortyiOSUITests.swift */; };
 		656D0FC624E6ED8C00A74E51 /* RickAndMortyCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0FC524E6ED8C00A74E51 /* RickAndMortyCharacter.swift */; };
+		656D0FCA24E83BDC00A74E51 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0FC924E83BDC00A74E51 /* URLSessionHTTPClient.swift */; };
+		656D0FCC24E83C0000A74E51 /* URLSessionHTTPClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0FCB24E83C0000A74E51 /* URLSessionHTTPClientTest.swift */; };
+		656D0FD024E83E3800A74E51 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0FCF24E83E3800A74E51 /* HTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		656D0FB724E6ED5A00A74E51 /* RickAndMortyiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyiOSUITests.swift; sourceTree = "<group>"; };
 		656D0FB924E6ED5A00A74E51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		656D0FC524E6ED8C00A74E51 /* RickAndMortyCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyCharacter.swift; sourceTree = "<group>"; };
+		656D0FC924E83BDC00A74E51 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
+		656D0FCB24E83C0000A74E51 /* URLSessionHTTPClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTest.swift; sourceTree = "<group>"; };
+		656D0FCF24E83E3800A74E51 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,8 @@
 				656D0F9924E6ED5700A74E51 /* ViewController.swift */,
 				656D0FC524E6ED8C00A74E51 /* RickAndMortyCharacter.swift */,
 				656D0F9B24E6ED5700A74E51 /* Main.storyboard */,
+				656D0FCF24E83E3800A74E51 /* HTTPClient.swift */,
+				656D0FC924E83BDC00A74E51 /* URLSessionHTTPClient.swift */,
 				656D0F9E24E6ED5A00A74E51 /* Assets.xcassets */,
 				656D0FA024E6ED5A00A74E51 /* LaunchScreen.storyboard */,
 				656D0FA324E6ED5A00A74E51 /* Info.plist */,
@@ -117,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				656D0FAC24E6ED5A00A74E51 /* RickAndMortyiOSTests.swift */,
+				656D0FCB24E83C0000A74E51 /* URLSessionHTTPClientTest.swift */,
 				656D0FAE24E6ED5A00A74E51 /* Info.plist */,
 			);
 			path = RickAndMortyiOSTests;
@@ -263,6 +272,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				656D0F9A24E6ED5700A74E51 /* ViewController.swift in Sources */,
+				656D0FCA24E83BDC00A74E51 /* URLSessionHTTPClient.swift in Sources */,
+				656D0FD024E83E3800A74E51 /* HTTPClient.swift in Sources */,
 				656D0F9624E6ED5700A74E51 /* AppDelegate.swift in Sources */,
 				656D0FC624E6ED8C00A74E51 /* RickAndMortyCharacter.swift in Sources */,
 				656D0F9824E6ED5700A74E51 /* SceneDelegate.swift in Sources */,
@@ -273,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				656D0FCC24E83C0000A74E51 /* URLSessionHTTPClientTest.swift in Sources */,
 				656D0FAD24E6ED5A00A74E51 /* RickAndMortyiOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
