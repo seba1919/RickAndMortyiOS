@@ -18,6 +18,7 @@
 		656D0FCA24E83BDC00A74E51 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0FC924E83BDC00A74E51 /* URLSessionHTTPClient.swift */; };
 		656D0FCC24E83C0000A74E51 /* URLSessionHTTPClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0FCB24E83C0000A74E51 /* URLSessionHTTPClientTest.swift */; };
 		656D0FD024E83E3800A74E51 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0FCF24E83E3800A74E51 /* HTTPClient.swift */; };
+		656D0FD424E8446A00A74E51 /* CharactersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0FD324E8446A00A74E51 /* CharactersViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		656D0FC924E83BDC00A74E51 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		656D0FCB24E83C0000A74E51 /* URLSessionHTTPClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTest.swift; sourceTree = "<group>"; };
 		656D0FCF24E83E3800A74E51 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		656D0FD324E8446A00A74E51 /* CharactersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			children = (
 				656D0F9524E6ED5700A74E51 /* AppDelegate.swift */,
 				656D0F9724E6ED5700A74E51 /* SceneDelegate.swift */,
+				656D0FD324E8446A00A74E51 /* CharactersViewModel.swift */,
 				656D0F9924E6ED5700A74E51 /* CharactersListViewController.swift */,
 				656D0FC524E6ED8C00A74E51 /* RickAndMortyCharacter.swift */,
 				656D0F9B24E6ED5700A74E51 /* Main.storyboard */,
@@ -268,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				656D0F9A24E6ED5700A74E51 /* CharactersListViewController.swift in Sources */,
+				656D0FD424E8446A00A74E51 /* CharactersViewModel.swift in Sources */,
 				656D0FCA24E83BDC00A74E51 /* URLSessionHTTPClient.swift in Sources */,
 				656D0FD024E83E3800A74E51 /* HTTPClient.swift in Sources */,
 				656D0F9624E6ED5700A74E51 /* AppDelegate.swift in Sources */,
