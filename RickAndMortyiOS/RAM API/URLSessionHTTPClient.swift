@@ -16,6 +16,7 @@ enum NetworkingError: Error {
 private struct UnexpectedValuesRepresentation: Error {}
 
 public class URLSessionHTTPClient: HTTPClient {
+    
     private let session: URLSession
 
 
@@ -28,6 +29,29 @@ public class URLSessionHTTPClient: HTTPClient {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            
+            completion(Result {
+                if let error = error {
+                    throw error
+                } else if let data = data, let response = response as? HTTPURLResponse {
+                    return (data, response)
+                } else {
+                    throw UnexpectedValuesRepresentation()
+                }
+            })
+        }
+        
+        task.resume()
+    }
+    
+    public func get(from url: URL, for pageNumber: Int, completion: @escaping (HTTPClient.Result) -> Void) {
+        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        urlComponents?.queryItems = [URLQueryItem(name: "page", value: String(pageNumber))]
+        guard let urlWithPageNumber = urlComponents?.url else { return }
+        var request = URLRequest(url: (urlWithPageNumber))
+        
+        request.httpMethod = "GET"
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             
             completion(Result {

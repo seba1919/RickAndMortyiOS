@@ -60,6 +60,7 @@ class CharacterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
     override func viewWillLayoutSubviews() {
         infoWrapper.layer.cornerRadius = 0.05*characterImageView.bounds.size.width
     }

@@ -38,7 +38,6 @@ class CharacterTableViewCell: UITableViewCell {
     lazy var characterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .purple
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
