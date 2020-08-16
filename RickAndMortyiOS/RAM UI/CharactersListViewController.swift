@@ -14,12 +14,13 @@ class CharactersListViewController: UIViewController {
     var viewModel: CharactersViewModel
     
     lazy var tableView: UITableView = {
-        let tv = UITableView()
-        tv.delegate = self
-        tv.dataSource = self
-        tv.register(UITableViewCell.self, forCellReuseIdentifier: "testCell")
-        tv.translatesAutoresizingMaskIntoConstraints = false
-        return tv
+        let tableView = UITableView()
+        tableView.backgroundColor = StyleKit.mainColor
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: CharacterTableViewCell.identifier)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
     }()
     
     init(with viewModel: CharactersViewModel) {
@@ -43,7 +44,6 @@ class CharactersListViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBarStyling()
         createView()
-
     }
     
     func createView() {
@@ -70,17 +70,10 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "testCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.identifier, for: indexPath) as! CharacterTableViewCell
+        
         let character = viewModel.characters[indexPath.row]
-        cell.textLabel?.text = character.name
-        cell.imageView?.kf.indicatorType = .activity
-        cell.backgroundColor = StyleKit.mainColor
-        cell.textLabel?.textColor = .white
-        cell.selectionStyle = .none
-        cell.imageView?.kf.setImage(with: character.imageURL, options: [
-                                        .scaleFactor(UIScreen.main.scale),
-                                        .transition(.fade(0.5)),
-                                        .cacheOriginalImage])
+        cell.configureCell(with: character)
         return cell
     }
     
