@@ -9,6 +9,7 @@
 import Foundation
 
 class CharactersViewModel {
+    let api = RickAndMortyAPI(with: URLSessionHTTPClient.shared)
     public var characters = [RickAndMortyCharacter]()
     private var currentPage = 1
     
@@ -21,16 +22,16 @@ class CharactersViewModel {
     }
     
     private func loadCharacters(forPage pageNumber: Int) {
-        let api = RickAndMortyAPI(with: URLSessionHTTPClient.shared)
-        api.getCharacters(forPage: pageNumber) { [weak self] result in
-            switch result {
-            case let .success(characters):
-                self?.characters = characters
-                self?.loadCharacters?()
-                break
-            case .failure(_):
-                break
+            api.getCharacters(forPage: pageNumber) { [weak self] result in
+                switch result {
+                case let .success(newCharacters):
+                    self?.characters.append(contentsOf: newCharacters)
+                    self?.loadCharacters?()
+                    
+                case .failure(_):
+                    break
+                }
             }
-        }
+        
     }
 }

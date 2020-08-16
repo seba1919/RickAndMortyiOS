@@ -19,6 +19,7 @@ class CharactersListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: CharacterTableViewCell.identifier)
+        tableView.register(LoadingCell.self, forCellReuseIdentifier: LoadingCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -65,16 +66,36 @@ class CharactersListViewController: UIViewController {
 }
 
 extension CharactersListViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.characters.count
+        if section == 0 {
+            return viewModel.characters.count
+        } else if section == 1 {
+            return 1
+        }
+        return 0
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
         let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.identifier, for: indexPath) as! CharacterTableViewCell
-        
+        if indexPath.row == viewModel.characters.count - 1 {
+//            if totalItems > viewModel.characters.count { // TODO: add fetching total items amount from repsonse
+            viewModel.loadNextCharactersPage()
+//            }
+        }
         let character = viewModel.characters[indexPath.row]
         cell.configureCell(with: character)
         return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: LoadingCell.identifier, for: indexPath) as! LoadingCell
+            cell.spinner.startAnimating()
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
