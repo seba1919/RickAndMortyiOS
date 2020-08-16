@@ -8,11 +8,22 @@
 
 import Foundation
 
-struct RickAndMortyCharacter {
-    public let id: UUID
+public enum Status: String, Codable {
+    case alive = "Alive"
+    case dead = "Dead"
+    case unknown = "unknown"
+}
+
+public struct Location: Codable {
+    let name: String
+    let url: String
+}
+
+public struct RickAndMortyCharacter: Decodable {
+    public let id: Int
     public let name: String
-    public let imageURL: URL
+    public let image: String
     public let gender: String
-    public let status: String
-    public let origin: String
+    public let status: Status
+    public let origin: Location
 }
