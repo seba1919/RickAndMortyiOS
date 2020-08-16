@@ -13,8 +13,9 @@ class CharactersViewModel {
     public var characters = [RickAndMortyCharacter]()
     private var currentPage = 1
     
-    public var loadCharacters: (() -> Void)?
-    public var loadError: (() -> Void)?
+    public var handleCharactersLoaded: (() -> Void)?
+    public var handleNoConnectivityError: (() -> Void)?
+    public var handleInvalidDataError: (() -> Void)?
     
     public func loadNextCharactersPage() {
         loadCharacters(forPage: currentPage)
@@ -26,12 +27,16 @@ class CharactersViewModel {
                 switch result {
                 case let .success(newCharacters):
                     self?.characters.append(contentsOf: newCharacters)
-                    self?.loadCharacters?()
+                    self?.handleCharactersLoaded?()
                     
-                case .failure(_):
-                    break
+                case let .failure(error):
+                    switch error {
+                    case .connectivity:
+                        self?.handleNoConnectivityError?()
+                    case .invalidData:
+                        self?.handleInvalidDataError?()
+                    }
                 }
             }
-        
     }
 }

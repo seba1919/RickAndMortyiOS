@@ -27,18 +27,38 @@ class CharactersListViewController: UIViewController {
     init(with viewModel: CharactersViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-
-        viewModel.loadCharacters = { [weak self] in
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
-        }
-        
+        setupViewModel()
         viewModel.loadNextCharactersPage()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: ViewModel setup
+    fileprivate func setupViewModel() {
+        viewModel.handleCharactersLoaded = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+        
+        viewModel.handleNoConnectivityError = {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "No internet connection", message: "Please, check your internet connection", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            
+        }
+        
+        viewModel.handleInvalidDataError = {
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "Invalid data", message: "Invalid data received, please contact with administrator.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
     
     override func viewDidLoad() {
@@ -82,15 +102,15 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.identifier, for: indexPath) as! CharacterTableViewCell
-        if indexPath.row == viewModel.characters.count - 1 {
-//            if totalItems > viewModel.characters.count { // TODO: add fetching total items amount from repsonse
-            viewModel.loadNextCharactersPage()
-//            }
-        }
-        let character = viewModel.characters[indexPath.row]
-        cell.configureCell(with: character)
-        return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.identifier, for: indexPath) as! CharacterTableViewCell
+            if indexPath.row == viewModel.characters.count - 1 {
+                //            if totalItems > viewModel.characters.count { // TODO: add fetching total items amount from repsonse
+                viewModel.loadNextCharactersPage()
+                //            }
+            }
+            let character = viewModel.characters[indexPath.row]
+            cell.configureCell(with: character)
+            return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: LoadingCell.identifier, for: indexPath) as! LoadingCell
             cell.spinner.startAnimating()

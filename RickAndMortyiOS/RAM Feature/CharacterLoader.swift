@@ -8,8 +8,14 @@
 
 import Foundation
 
+public enum LoaderError: Swift.Error {
+    case connectivity
+    case invalidData
+}
+
 public protocol CharacterLoader {
-    typealias Result = Swift.Result<[RickAndMortyCharacter], Error>
+    
+    typealias Result = Swift.Result<[RickAndMortyCharacter], LoaderError>
     
     func getCharacters(forPage pageNumber: Int?, completion: @escaping
                                 (Result) -> Void)

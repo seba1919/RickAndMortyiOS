@@ -19,7 +19,7 @@ final class RickAndMortyItemsMapper {
     
     static func map(_ data: Data, from response: HTTPURLResponse) throws -> [RemoteRickAndMortyCharacterItem] {
         guard response.isOK, let root = try? JSONDecoder().decode(Root.self, from: data) else {
-            throw RickAndMortyAPI.Error.invalidData
+            throw LoaderError.invalidData
         }
 
         return root.items

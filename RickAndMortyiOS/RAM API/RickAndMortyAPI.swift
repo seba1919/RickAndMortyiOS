@@ -12,11 +12,6 @@ public class RickAndMortyAPI: CharacterLoader {
     let client: HTTPClient
     let baseURL = URL(string: "https://rickandmortyapi.com/api/character")!
     
-    public enum Error: Swift.Error {
-        case connectivity
-        case invalidData
-    }
-    
     public typealias Result = CharacterLoader.Result
     
     public init(with client: HTTPClient) {
@@ -30,7 +25,7 @@ public class RickAndMortyAPI: CharacterLoader {
             case let .success((data, response)):
                 completion(RickAndMortyAPI.map(data, from: response))
             case .failure:
-                completion(.failure(Error.connectivity))
+                completion(.failure(LoaderError.connectivity))
             }
         }
     }
@@ -41,7 +36,7 @@ public class RickAndMortyAPI: CharacterLoader {
             return .success(items.toModels())
         }
         catch {
-            return .failure(error)
+            return .failure(LoaderError.invalidData)
         }
     }
 }
