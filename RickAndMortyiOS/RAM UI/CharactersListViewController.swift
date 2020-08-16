@@ -25,7 +25,6 @@ class CharactersListViewController: UIViewController {
     init(with viewModel: CharactersViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        createView()
 
         viewModel.loadCharacters = { [weak self] in
             DispatchQueue.main.async {
@@ -42,13 +41,12 @@ class CharactersListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
+        setupNavigationBarStyling()
         createView()
+
     }
     
     func createView() {
-        
         self.view.addSubview(tableView)
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -56,8 +54,13 @@ class CharactersListViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
-        
+    }
+    
+    func setupNavigationBarStyling() {
+        navigationController?.navigationBar.barTintColor = StyleKit.secondaryColor
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.tintColor = .white
+        self.title = "Characters list"
     }
 }
 
@@ -71,10 +74,12 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
         let character = viewModel.characters[indexPath.row]
         cell.textLabel?.text = character.name
         cell.imageView?.kf.indicatorType = .activity
-      
+        cell.backgroundColor = StyleKit.mainColor
+        cell.textLabel?.textColor = .white
+        cell.selectionStyle = .none
         cell.imageView?.kf.setImage(with: character.imageURL, options: [
                                         .scaleFactor(UIScreen.main.scale),
-                                        .transition(.fade(1)),
+                                        .transition(.fade(0.5)),
                                         .cacheOriginalImage])
         return cell
     }
