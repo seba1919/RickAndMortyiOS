@@ -9,22 +9,15 @@
 import XCTest
 import RickAndMortyiOS
 class RickAndMortyAPITests: XCTestCase {
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
     
-    func test_getAllCharacters_performRequestForCharacters() {
-        let url = URL(string: "https://rickandmortyapi.com/api/character")!
-        let sut = RickAndMortyAPI(with: url,
-                                  with: URLSessionHTTPClient(session: URLSession.shared))
+    func test_getCharactersForPage_performRequestForCharacters() {
+        let sut = RickAndMortyAPI(with: URLSessionHTTPClient(session: URLSession.shared))
         
         let exp = expectation(description: "Wait for request")
-        sut.getAllCharacters { result in
+        sut.getCharacters(forPage: 3) { result in
             switch result {
             case let .success(characters):
-                XCTAssertNotNil(characters)
+                XCTAssertNotEqual(characters.count, 0)
                 exp.fulfill()
                 break
             case .failure:

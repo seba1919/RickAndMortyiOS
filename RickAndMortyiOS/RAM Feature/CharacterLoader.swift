@@ -11,5 +11,6 @@ import Foundation
 public protocol CharacterLoader {
     typealias Result = Swift.Result<[RickAndMortyCharacter], Error>
     
-    func getAllCharacters(completion: @escaping ((Result) -> Void))
+    func getCharacters(forPage pageNumber: Int?, completion: @escaping
+                                (Result) -> Void)
 }

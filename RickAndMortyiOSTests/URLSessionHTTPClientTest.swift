@@ -39,7 +39,7 @@ class URLSessionHTTPClientTest: XCTestCase {
         let sut = URLSessionHTTPClient(session: URLSession.shared)
         
         let exp = expectation(description: "Wait for request")
-        sut.get(from: url, for: pageNumber) { response in
+        sut.get(from: url, forPage: pageNumber) { response in
             switch response {
             case let .success((data, response)):
                 

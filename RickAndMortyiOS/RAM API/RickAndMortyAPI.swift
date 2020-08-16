@@ -10,7 +10,7 @@ import Foundation
 
 public class RickAndMortyAPI: CharacterLoader {
     let client: HTTPClient
-    let baseURL: URL
+    let baseURL = URL(string: "https://rickandmortyapi.com/api/character")!
     
     public enum Error: Swift.Error {
         case connectivity
@@ -19,29 +19,29 @@ public class RickAndMortyAPI: CharacterLoader {
     
     public typealias Result = CharacterLoader.Result
     
-    public init(with url: URL,
-                with client: HTTPClient) {
-        self.baseURL = url
+    public init(with client: HTTPClient) {
         self.client = client
     }
     
-    public func getAllCharacters(completion: @escaping
+    public func getCharacters(forPage pageNumber: Int?, completion: @escaping
         (Result) -> Void) {
-        client.get(from: baseURL) { result in
+        client.get(from: baseURL, forPage: pageNumber) { result in
             switch result {
             case let .success((data, response)):
-                do {
-                    let items = try RickAndMortyItemsMapper.map(data, from: response)
-                    completion(.success(items.toModels()))
-                }
-                catch {
-                    completion(.failure(error))
-                }
-                break
+                completion(RickAndMortyAPI.map(data, from: response))
             case .failure:
                 completion(.failure(Error.connectivity))
-                break
             }
+        }
+    }
+    
+    private static func map(_ data: Data, from response: HTTPURLResponse) -> Result {
+        do {
+            let items = try RickAndMortyItemsMapper.map(data, from: response)
+            return .success(items.toModels())
+        }
+        catch {
+            return .failure(error)
         }
     }
 }
@@ -56,16 +56,13 @@ private extension Array where Element == RemoteRickAndMortyCharacterItem {
             switch characterItem.gender {
             case .female:
                 gender = .female
-                break
             case .male:
                 gender = .male
-                break
             case .genderless:
                 gender = .genderless
-                break
             case .unknown:
                 gender = .unknown
-                break
+                
             }
             
             let characterStatus: RickAndMortyCharacterStatus

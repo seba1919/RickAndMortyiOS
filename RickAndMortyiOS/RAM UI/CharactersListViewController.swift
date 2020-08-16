@@ -33,7 +33,7 @@ class CharactersListViewController: UIViewController {
             }
         }
         
-        viewModel.getAllCharacters()
+        viewModel.loadNextCharactersPage()
     }
     
     required init?(coder: NSCoder) {

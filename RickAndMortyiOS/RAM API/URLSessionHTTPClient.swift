@@ -45,13 +45,9 @@ public class URLSessionHTTPClient: HTTPClient {
         task.resume()
     }
     
-    public func get(from url: URL, for pageNumber: Int, completion: @escaping (HTTPClient.Result) -> Void) {
-        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        urlComponents?.queryItems = [URLQueryItem(name: "page", value: String(pageNumber))]
-        guard let urlWithPageNumber = urlComponents?.url else { return }
-        var request = URLRequest(url: (urlWithPageNumber))
+    public func get(from url: URL, forPage pageNumber: Int? = nil, completion: @escaping (HTTPClient.Result) -> Void) {
         
-        request.httpMethod = "GET"
+        guard let request = getURLRequest(for: url, forPage: pageNumber) else { return }
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             
             completion(Result {
@@ -66,5 +62,18 @@ public class URLSessionHTTPClient: HTTPClient {
         }
         
         task.resume()
+    }
+    
+    func getURLRequest(for url: URL, forPage pageNumber: Int?) -> URLRequest? {
+        var request: URLRequest
+        if let pageNumber = pageNumber,
+           var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) {
+            urlComponents.queryItems = [URLQueryItem(name: "page", value: String(pageNumber))]
+            guard let urlWithPageNumber = urlComponents.url else { return nil}
+            request = URLRequest(url: urlWithPageNumber)
+        } else {
+            request = URLRequest(url: url)
+        }
+        return request
     }
 }
