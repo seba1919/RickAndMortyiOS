@@ -128,40 +128,46 @@ class CharacterViewController: UIViewController {
         
         var lastConstraint = informationWrapperView.topAnchor
         for characterInformation in characterInformationArray {
-            let genderStackView = getDetailInfoStackView(with: characterInformation.name,
+            let detailInformationStackView = getDetailInformationStackView(with: characterInformation.name,
                                                          with: characterInformation.value)
-            informationWrapperView.addSubview(genderStackView)
+            informationWrapperView.addSubview(detailInformationStackView)
 
             NSLayoutConstraint.activate([
-                genderStackView.topAnchor.constraint(equalTo: lastConstraint, constant: padding),
-                genderStackView.leadingAnchor.constraint(equalTo: nameWrapper.leadingAnchor, constant: 2*padding),
-                genderStackView.trailingAnchor.constraint(equalTo: nameWrapper.trailingAnchor, constant: 4*(-1)*padding),
-                genderStackView.heightAnchor.constraint(equalToConstant: 25)
+                detailInformationStackView.topAnchor.constraint(equalTo: lastConstraint, constant: padding),
+                detailInformationStackView.leadingAnchor.constraint(equalTo: nameWrapper.leadingAnchor, constant: 2*padding),
+                detailInformationStackView.trailingAnchor.constraint(equalTo: nameWrapper.trailingAnchor, constant: 4*(-1)*padding),
+                detailInformationStackView.heightAnchor.constraint(equalToConstant: 25)
             ])
             
-            lastConstraint = genderStackView.bottomAnchor
+            lastConstraint = detailInformationStackView.bottomAnchor
         }
         informationWrapperView.bottomAnchor.constraint(equalTo: lastConstraint).isActive = true
         
         return informationWrapperView
     }
     
-    private func getDetailInfoStackView(with key: String, with value: String) -> UIStackView {
+    private func getDetailInformationStackView(with key: String, with value: String) -> UIStackView {
         let stackView = UIStackView()
-        stackView.distribution = .equalSpacing
+        stackView.distribution = .equalCentering
         stackView.axis = .horizontal
+        stackView.spacing = padding
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
-        let genderKeyLabel = UILabel()
-        genderKeyLabel.textColor = .white
-        genderKeyLabel.text = key
+        let keyLabel = UILabel()
+        keyLabel.textColor = StyleKit.accentColor
+        keyLabel.textAlignment = .left
+        keyLabel.text = key
+        keyLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        keyLabel.adjustsFontSizeToFitWidth = false
         
-        let genderValueLabel = UILabel()
-        genderValueLabel.textColor = .white
-        genderValueLabel.text = value
+        let valueLabel = UILabel()
+        valueLabel.textColor = .white
+        valueLabel.text = value
+        valueLabel.textAlignment = .right
+        keyLabel.adjustsFontSizeToFitWidth = true
         
-        stackView.addArrangedSubview(genderKeyLabel)
-        stackView.addArrangedSubview(genderValueLabel)
+        stackView.addArrangedSubview(keyLabel)
+        stackView.addArrangedSubview(valueLabel)
         
         return stackView
     }
