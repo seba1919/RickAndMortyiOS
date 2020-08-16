@@ -58,8 +58,8 @@ class CharactersListViewController: UIViewController {
     
     func setupNavigationBarStyling() {
         navigationController?.navigationBar.barTintColor = StyleKit.secondaryColor
-        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: StyleKit.accentColor]
+        navigationController?.navigationBar.tintColor = StyleKit.accentColor
         self.title = "Characters list"
     }
 }
