@@ -11,4 +11,5 @@ import UIKit
 struct StyleKit {
     static let mainColor = UIColor(rgb: 0x212328)
     static let secondaryColor = UIColor(rgb: 0x3c3e43)
+    static let accentColor = UIColor(rgb: 0xfe9800)
 }
