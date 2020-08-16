@@ -68,16 +68,17 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "testCell")
-        cell.textLabel?.text = viewModel.characters[indexPath.row].name
+        let character = viewModel.characters[indexPath.row]
+        cell.textLabel?.text = character.name
         cell.imageView?.kf.indicatorType = .activity
-        if let url = URL(string: viewModel.characters[indexPath.row].image) {
-            cell.imageView?.kf.setImage(with: url, options:         [
+      
+        cell.imageView?.kf.setImage(with: character.imageURL, options: [
                                         .scaleFactor(UIScreen.main.scale),
                                         .transition(.fade(1)),
                                         .cacheOriginalImage])
-        }
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedCharacter = viewModel.characters[indexPath.row]
         let characterPresentingVC =  CharacterViewController(with: selectedCharacter)
