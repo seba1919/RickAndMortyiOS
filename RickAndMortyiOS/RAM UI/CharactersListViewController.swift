@@ -78,4 +78,9 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
         }
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCharacter = viewModel.characters[indexPath.row]
+        let characterPresentingVC =  CharacterViewController(with: selectedCharacter)
+        navigationController?.pushViewController(characterPresentingVC, animated: true)
+    }
 }
