@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CharactersListViewController: UIViewController {
     
@@ -31,7 +32,8 @@ class CharactersListViewController: UIViewController {
                 self?.tableView.reloadData()
             }
         }
-
+        
+        viewModel.getAllCharacters()
     }
     
     required init?(coder: NSCoder) {
@@ -67,7 +69,13 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "testCell")
         cell.textLabel?.text = viewModel.characters[indexPath.row].name
-        
+        cell.imageView?.kf.indicatorType = .activity
+        if let url = URL(string: viewModel.characters[indexPath.row].image) {
+            cell.imageView?.kf.setImage(with: url, options:         [
+                                        .scaleFactor(UIScreen.main.scale),
+                                        .transition(.fade(1)),
+                                        .cacheOriginalImage])
+        }
         return cell
     }
 }
