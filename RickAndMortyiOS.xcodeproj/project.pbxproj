@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0C0B9A83770DA6F80297D94B /* Pods_RickAndMortyiOS_RickAndMortyiOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0342F98BA9EE4640460FF78B /* Pods_RickAndMortyiOS_RickAndMortyiOSUITests.framework */; };
 		36CECEA5521DEB5EFFC8B0DD /* Pods_RickAndMortyiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 634C72FCCB4DE2D08E327DEE /* Pods_RickAndMortyiOS.framework */; };
+		65609C7024E9784600E98FCF /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65609C6F24E9784600E98FCF /* UIColor+hex.swift */; };
+		65609C7324E9790500E98FCF /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65609C7224E9790500E98FCF /* StyleKit.swift */; };
 		656D0F9624E6ED5700A74E51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0F9524E6ED5700A74E51 /* AppDelegate.swift */; };
 		656D0F9824E6ED5700A74E51 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0F9724E6ED5700A74E51 /* SceneDelegate.swift */; };
 		656D0F9A24E6ED5700A74E51 /* CharactersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0F9924E6ED5700A74E51 /* CharactersListViewController.swift */; };
@@ -54,6 +56,8 @@
 		42687F2867FA527C778A62D0 /* Pods_RickAndMortyiOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RickAndMortyiOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		459F87F1E0B7BDCD50610CFE /* Pods-RickAndMortyiOS-RickAndMortyiOSUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMortyiOS-RickAndMortyiOSUITests.debug.xcconfig"; path = "Target Support Files/Pods-RickAndMortyiOS-RickAndMortyiOSUITests/Pods-RickAndMortyiOS-RickAndMortyiOSUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		634C72FCCB4DE2D08E327DEE /* Pods_RickAndMortyiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RickAndMortyiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65609C6F24E9784600E98FCF /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
+		65609C7224E9790500E98FCF /* StyleKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		656D0F9224E6ED5700A74E51 /* RickAndMortyiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMortyiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		656D0F9524E6ED5700A74E51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		656D0F9724E6ED5700A74E51 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +136,15 @@
 				B32108E68BFD2907A692BF44 /* Pods-RickAndMortyiOSTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		65609C7124E9784F00E98FCF /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				65609C6F24E9784600E98FCF /* UIColor+hex.swift */,
+				65609C7224E9790500E98FCF /* StyleKit.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		656D0F8924E6ED5700A74E51 = {
@@ -216,8 +229,9 @@
 		656D0FE324E93F6900A74E51 /* RAM UI */ = {
 			isa = PBXGroup;
 			children = (
-				656D0FE524E9486B00A74E51 /* CharacterViewController.swift */,
+				65609C7124E9784F00E98FCF /* Helper */,
 				656D0F9924E6ED5700A74E51 /* CharactersListViewController.swift */,
+				656D0FE524E9486B00A74E51 /* CharacterViewController.swift */,
 			);
 			path = "RAM UI";
 			sourceTree = "<group>";
@@ -478,10 +492,12 @@
 				656D0FEF24E9566D00A74E51 /* RickAndMortyItemsMapper.swift in Sources */,
 				656D0F9A24E6ED5700A74E51 /* CharactersListViewController.swift in Sources */,
 				656D0FD624E845DD00A74E51 /* RickAndMortyAPI.swift in Sources */,
+				65609C7324E9790500E98FCF /* StyleKit.swift in Sources */,
 				656D0FD424E8446A00A74E51 /* CharactersViewModel.swift in Sources */,
 				656D0FCA24E83BDC00A74E51 /* URLSessionHTTPClient.swift in Sources */,
 				656D0FD824E85FEF00A74E51 /* CharacterLoader.swift in Sources */,
 				656D0FD024E83E3800A74E51 /* HTTPClient.swift in Sources */,
+				65609C7024E9784600E98FCF /* UIColor+hex.swift in Sources */,
 				656D0FE624E9486B00A74E51 /* CharacterViewController.swift in Sources */,
 				656D0F9624E6ED5700A74E51 /* AppDelegate.swift in Sources */,
 				656D0FC624E6ED8C00A74E51 /* RemoteRickAndMortyCharacterItem.swift in Sources */,
