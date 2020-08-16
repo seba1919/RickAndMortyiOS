@@ -32,8 +32,8 @@ public class RickAndMortyAPI: CharacterLoader {
     
     private static func map(_ data: Data, from response: HTTPURLResponse) -> Result {
         do {
-            let items = try RickAndMortyItemsMapper.map(data, from: response)
-            return .success(items.toModels())
+            let (items, amount) = try RickAndMortyItemsMapper.map(data, from: response)
+            return .success((characters: items.toModels(), charactersAmount: amount))
         }
         catch {
             return .failure(LoaderError.invalidData)

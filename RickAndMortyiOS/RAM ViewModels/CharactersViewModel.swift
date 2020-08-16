@@ -11,6 +11,7 @@ import Foundation
 class CharactersViewModel {
     // MARK: - Public properties
     public var characters = [RickAndMortyCharacter]()
+    public var charactersTotalAmount: Int = 0
     
     // MARK: CharactersViewModel closure handlers
     public var handleCharactersLoaded: (() -> Void)?
@@ -31,8 +32,9 @@ class CharactersViewModel {
     private func loadCharacters(forPage pageNumber: Int) {
             api.getCharacters(forPage: pageNumber) { [weak self] result in
                 switch result {
-                case let .success(newCharacters):
+                case let .success((newCharacters, amount)):
                     self?.characters.append(contentsOf: newCharacters)
+                    self?.charactersTotalAmount = amount
                     self?.handleCharactersLoaded?()
                     
                 case let .failure(error):

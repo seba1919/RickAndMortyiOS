@@ -107,9 +107,9 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.identifier, for: indexPath) as! CharacterTableViewCell
             if indexPath.row == viewModel.characters.count - 1 {
-                //            if totalItems > viewModel.characters.count { // TODO: add fetching total items amount from repsonse
-                viewModel.loadNextCharactersPage()
-                //            }
+                if viewModel.charactersTotalAmount > viewModel.characters.count {
+                    viewModel.loadNextCharactersPage()
+                }
             }
             let character = viewModel.characters[indexPath.row]
             cell.configureCell(with: character)

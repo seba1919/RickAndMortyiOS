@@ -9,19 +9,25 @@
 import Foundation
 
 final class RickAndMortyItemsMapper {
-    private struct Root: Decodable {
+    struct Root: Decodable {
+        let itemsInfo: ItemsInfo
         let items: [RemoteRickAndMortyCharacterItem]
         
         enum CodingKeys: String, CodingKey {
             case items = "results"
+            case itemsInfo = "info"
         }
     }
     
-    static func map(_ data: Data, from response: HTTPURLResponse) throws -> [RemoteRickAndMortyCharacterItem] {
+    struct ItemsInfo: Decodable {
+        let count, pages: Int
+    }
+    
+    static func map(_ data: Data, from response: HTTPURLResponse) throws -> (characcters: [RemoteRickAndMortyCharacterItem], characctersAmount: Int) {
         guard response.isOK, let root = try? JSONDecoder().decode(Root.self, from: data) else {
             throw LoaderError.invalidData
         }
 
-        return root.items
+        return (characcters: root.items, characctersAmount: root.itemsInfo.count)
     }
 }

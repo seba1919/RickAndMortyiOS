@@ -15,7 +15,7 @@ public enum LoaderError: Swift.Error {
 
 public protocol CharacterLoader {
     
-    typealias Result = Swift.Result<[RickAndMortyCharacter], LoaderError>
+    typealias Result = Swift.Result<(characters: [RickAndMortyCharacter], charactersAmount: Int), LoaderError>
     
     func getCharacters(forPage pageNumber: Int?, completion: @escaping
                                 (Result) -> Void)
