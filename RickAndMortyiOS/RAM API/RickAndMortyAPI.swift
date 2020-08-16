@@ -17,14 +17,6 @@ public class RickAndMortyAPI: CharacterLoader {
         case invalidData
     }
     
-    private struct Root: Decodable {
-        let results: [RemoteRickAndMortyCharacterItem]
-        
-        enum CodingKeys: String, CodingKey {
-            case results = "results"
-        }
-    }
-    
     public typealias Result = CharacterLoader.Result
     
     public init(with url: URL,
@@ -33,17 +25,17 @@ public class RickAndMortyAPI: CharacterLoader {
         self.client = client
     }
     
-    public func getAllCharacters(completion: @escaping ((Result) -> Void)) {
+    public func getAllCharacters(completion: @escaping
+        (Result) -> Void) {
         client.get(from: baseURL) { result in
             switch result {
-            case let .success(jsonData, response):
-                
-                if let items = try? JSONDecoder().decode(Root.self, from: jsonData),
-                    response.isOK {
-                    
-                    completion(.success(items.results.toModels()))
-                } else {
-                    completion(.failure(Error.invalidData))
+            case let .success((data, response)):
+                do {
+                    let items = try RickAndMortyItemsMapper.map(data, from: response)
+                    completion(.success(items.toModels()))
+                }
+                catch {
+                    completion(.failure(error))
                 }
                 break
             case .failure:
@@ -57,7 +49,9 @@ public class RickAndMortyAPI: CharacterLoader {
 private extension Array where Element == RemoteRickAndMortyCharacterItem {
     func toModels() -> [RickAndMortyCharacter] {
         return map { characterItem in
+            
             let imageURL = URL(string: characterItem.image)
+            
             let gender: RickAndMortyCharacterGender
             switch characterItem.gender {
             case .female:
