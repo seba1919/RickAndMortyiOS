@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CharacterTableViewCell: UITableViewCell {
     
@@ -68,7 +69,12 @@ class CharacterTableViewCell: UITableViewCell {
     func configureCell(with character: RickAndMortyCharacter) {
         self.character = character
         characterNameLabel.text = character.name
-        characterImageView.kf.setImage(with: character.imageURL)
+        characterImageView.kf.indicatorType = .activity
+        (characterImageView.kf.indicator?.view as? UIActivityIndicatorView)?.color = StyleKit.accentColor
+        characterImageView.kf.setImage(with: character.imageURL, options: [
+                                        .scaleFactor(UIScreen.main.scale),
+                                        .transition(.fade(1)),
+                                        .cacheOriginalImage])
     }
     
     private func createView() {
