@@ -10,7 +10,6 @@
 		656D0F9624E6ED5700A74E51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0F9524E6ED5700A74E51 /* AppDelegate.swift */; };
 		656D0F9824E6ED5700A74E51 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0F9724E6ED5700A74E51 /* SceneDelegate.swift */; };
 		656D0F9A24E6ED5700A74E51 /* CharactersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0F9924E6ED5700A74E51 /* CharactersListViewController.swift */; };
-		656D0F9D24E6ED5700A74E51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 656D0F9B24E6ED5700A74E51 /* Main.storyboard */; };
 		656D0F9F24E6ED5A00A74E51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 656D0F9E24E6ED5A00A74E51 /* Assets.xcassets */; };
 		656D0FAD24E6ED5A00A74E51 /* RickAndMortyiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0FAC24E6ED5A00A74E51 /* RickAndMortyiOSTests.swift */; };
 		656D0FB824E6ED5A00A74E51 /* RickAndMortyiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656D0FB724E6ED5A00A74E51 /* RickAndMortyiOSUITests.swift */; };
@@ -46,7 +45,6 @@
 		656D0F9524E6ED5700A74E51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		656D0F9724E6ED5700A74E51 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		656D0F9924E6ED5700A74E51 /* CharactersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewController.swift; sourceTree = "<group>"; };
-		656D0F9C24E6ED5700A74E51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		656D0F9E24E6ED5A00A74E51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		656D0FA324E6ED5A00A74E51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		656D0FA824E6ED5A00A74E51 /* RickAndMortyiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RickAndMortyiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,14 +113,10 @@
 			children = (
 				656D0F9524E6ED5700A74E51 /* AppDelegate.swift */,
 				656D0F9724E6ED5700A74E51 /* SceneDelegate.swift */,
-				656D0FD524E845DD00A74E51 /* RickAndMortyAPI.swift */,
-				656D0FCF24E83E3800A74E51 /* HTTPClient.swift */,
-				656D0FC924E83BDC00A74E51 /* URLSessionHTTPClient.swift */,
-				656D0FC524E6ED8C00A74E51 /* RickAndMortyCharacter.swift */,
-				656D0FD724E85FEF00A74E51 /* CharacterLoader.swift */,
-				656D0FD324E8446A00A74E51 /* CharactersViewModel.swift */,
-				656D0F9924E6ED5700A74E51 /* CharactersListViewController.swift */,
-				656D0F9B24E6ED5700A74E51 /* Main.storyboard */,
+				656D0FE124E93F4900A74E51 /* RAM API */,
+				656D0FE224E93F5B00A74E51 /* RAM Feature */,
+				656D0FE424E93F7800A74E51 /* RAM ViewModels */,
+				656D0FE324E93F6900A74E51 /* RAM UI */,
 				656D0F9E24E6ED5A00A74E51 /* Assets.xcassets */,
 				656D0FA324E6ED5A00A74E51 /* Info.plist */,
 			);
@@ -147,6 +141,41 @@
 				656D0FB924E6ED5A00A74E51 /* Info.plist */,
 			);
 			path = RickAndMortyiOSUITests;
+			sourceTree = "<group>";
+		};
+		656D0FE124E93F4900A74E51 /* RAM API */ = {
+			isa = PBXGroup;
+			children = (
+				656D0FD524E845DD00A74E51 /* RickAndMortyAPI.swift */,
+				656D0FCF24E83E3800A74E51 /* HTTPClient.swift */,
+				656D0FC924E83BDC00A74E51 /* URLSessionHTTPClient.swift */,
+			);
+			path = "RAM API";
+			sourceTree = "<group>";
+		};
+		656D0FE224E93F5B00A74E51 /* RAM Feature */ = {
+			isa = PBXGroup;
+			children = (
+				656D0FC524E6ED8C00A74E51 /* RickAndMortyCharacter.swift */,
+				656D0FD724E85FEF00A74E51 /* CharacterLoader.swift */,
+			);
+			path = "RAM Feature";
+			sourceTree = "<group>";
+		};
+		656D0FE324E93F6900A74E51 /* RAM UI */ = {
+			isa = PBXGroup;
+			children = (
+				656D0F9924E6ED5700A74E51 /* CharactersListViewController.swift */,
+			);
+			path = "RAM UI";
+			sourceTree = "<group>";
+		};
+		656D0FE424E93F7800A74E51 /* RAM ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				656D0FD324E8446A00A74E51 /* CharactersViewModel.swift */,
+			);
+			path = "RAM ViewModels";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,7 +283,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				656D0F9F24E6ED5A00A74E51 /* Assets.xcassets in Resources */,
-				656D0F9D24E6ED5700A74E51 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,17 +351,6 @@
 			targetProxy = 656D0FB424E6ED5A00A74E51 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		656D0F9B24E6ED5700A74E51 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				656D0F9C24E6ED5700A74E51 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		656D0FBA24E6ED5A00A74E51 /* Debug */ = {

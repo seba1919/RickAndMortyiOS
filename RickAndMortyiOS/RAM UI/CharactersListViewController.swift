@@ -25,6 +25,13 @@ class CharactersListViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         createView()
+
+        viewModel.loadCharacters = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+
     }
     
     required init?(coder: NSCoder) {
@@ -59,7 +66,8 @@ extension CharactersListViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "testCell")
-        cell.textLabel?.text = viewModel.characters[indexPath.row]
+        cell.textLabel?.text = viewModel.characters[indexPath.row].name
+        
         return cell
     }
 }
