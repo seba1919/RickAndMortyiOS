@@ -82,7 +82,8 @@ private extension Array where Element == RemoteRickAndMortyCharacterItem {
                                          imageURL: imageURL,
                                          gender: gender,
                                          status: characterStatus,
-                                         origin: characterItem.origin.name)
+                                         origin: characterItem.origin.name,
+                                         location: characterItem.location.name)
         }
     }
 }

@@ -110,7 +110,7 @@ class CharacterViewController: UIViewController {
             (name: "Gender:", value: character.gender.rawValue),
             (name: "Status:", value: character.status.rawValue),
             (name: "Origin:", value: character.origin),
-            (name : "Location", value: "TODO LOCATION")]
+            (name: "Location:", value: character.location)]
         
         let detailsInfoView = setupDetailsInfoView(with: characterDetailInformation)
         NSLayoutConstraint.activate([

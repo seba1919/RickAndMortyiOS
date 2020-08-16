@@ -28,4 +28,5 @@ public struct RickAndMortyCharacter {
     let gender: RickAndMortyCharacterGender
     let status: RickAndMortyCharacterStatus
     let origin: String
+    let location: String
 }

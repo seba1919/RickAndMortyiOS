@@ -33,4 +33,5 @@ public struct RemoteRickAndMortyCharacterItem: Decodable {
     public let gender: RickAndMortyCharacterGenderItem
     public let status: RickAndMortyCharacterStatusItem
     public let origin: RickAndMortyLocationItem
+    public let location: RickAndMortyLocationItem
 }
