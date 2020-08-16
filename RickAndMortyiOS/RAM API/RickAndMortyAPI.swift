@@ -39,7 +39,7 @@ public class RickAndMortyAPI: CharacterLoader {
             case let .success(jsonData, response):
                 
                 if let items = try? JSONDecoder().decode(Root.self, from: jsonData),
-                response.statusCode == 200 {
+                    response.isOK {
                     
                     completion(.success(items.results.toModels()))
                 } else {
