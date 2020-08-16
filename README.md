@@ -6,7 +6,3 @@ TODO:
 - [ ] Testing
 - [ ] Add animations
 - [ ] Refactor to RxSwift
-
-
-ScreenShots:
-
