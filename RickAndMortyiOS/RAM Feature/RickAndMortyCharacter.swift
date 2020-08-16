@@ -8,13 +8,13 @@
 
 import Foundation
 
-public enum RickAndMortyCharacterStatus {
+public enum RickAndMortyCharacterStatus: String {
     case alive
     case dead
     case unknown
 }
 
-public enum RickAndMortyCharacterGender {
+public enum RickAndMortyCharacterGender: String {
     case female
     case male
     case genderless
@@ -27,5 +27,5 @@ public struct RickAndMortyCharacter {
     let imageURL: URL?
     let gender: RickAndMortyCharacterGender
     let status: RickAndMortyCharacterStatus
-    let origin: RickAndMortyLocationItem
+    let origin: String
 }
