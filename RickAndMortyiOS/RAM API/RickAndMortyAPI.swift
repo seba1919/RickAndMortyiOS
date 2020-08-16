@@ -10,7 +10,7 @@ import Foundation
 
 public class RickAndMortyAPI: CharacterLoader {
     let client: HTTPClient
-    let baseURL = URL(string: "https://rickandmortyapi.com/api/character")!
+    let baseURL = URL(string: "https://rickandmortyapi.com/api/character/")!
     
     public typealias Result = CharacterLoader.Result
     

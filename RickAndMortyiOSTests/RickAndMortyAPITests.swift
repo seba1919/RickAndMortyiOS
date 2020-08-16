@@ -11,7 +11,7 @@ import RickAndMortyiOS
 class RickAndMortyAPITests: XCTestCase {
     
     func test_getCharactersForPage_performRequestForCharacters() {
-        let sut = RickAndMortyAPI(with: URLSessionHTTPClient(session: URLSession.shared))
+        let sut = RickAndMortyAPI(with: URLSessionHTTPClient.shared)
         
         let exp = expectation(description: "Wait for request")
         sut.getCharacters(forPage: 3) { result in

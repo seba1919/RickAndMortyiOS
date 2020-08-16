@@ -8,20 +8,20 @@
 
 import Foundation
 
-public enum RickAndMortyCharacterStatusItem: String, Codable {
+public enum RickAndMortyCharacterStatusItem: String, Decodable {
     case alive = "Alive"
     case dead = "Dead"
     case unknown = "unknown"
 }
 
-public enum RickAndMortyCharacterGenderItem: String, Codable {
+public enum RickAndMortyCharacterGenderItem: String, Decodable {
     case female = "Female"
     case male = "Male"
     case genderless = "Genderless"
     case unknown = "unknown"
 }
 
-public struct RickAndMortyLocationItem: Codable {
+public struct RickAndMortyLocationItem: Decodable {
     let name: String
     let url: String
 }

@@ -61,12 +61,14 @@ class CharactersListViewController: UIViewController {
         }
     }
     
+    // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBarStyling()
         createView()
     }
     
+    // MARK: UI setup
     func createView() {
         self.view.addSubview(tableView)
         NSLayoutConstraint.activate([
@@ -85,6 +87,7 @@ class CharactersListViewController: UIViewController {
     }
 }
 
+// MARK: TableView delegate
 extension CharactersListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

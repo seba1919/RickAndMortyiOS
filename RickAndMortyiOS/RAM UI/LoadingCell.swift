@@ -10,14 +10,17 @@ import UIKit
 
 public class LoadingCell: UITableViewCell {
     
+    // MARK: Static properties
     static let identifier = "LoadingCell"
     
+    // MARK: UI components
     lazy var spinner: UIActivityIndicatorView = {
         let activity = UIActivityIndicatorView(style: .medium)
         activity.translatesAutoresizingMaskIntoConstraints = false
         return activity
     }()
     
+    // MARK: Initialisation
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         layoutSpinner()
@@ -28,6 +31,7 @@ public class LoadingCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: UI setup
     private func layoutSpinner() {
         self.addSubview(spinner)
         NSLayoutConstraint.activate([

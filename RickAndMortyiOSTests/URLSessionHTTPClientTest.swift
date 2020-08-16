@@ -13,7 +13,7 @@ class URLSessionHTTPClientTest: XCTestCase {
     
     func test_getFromURL_performGetRequestFromURL() {
         let url = URL(string: "https://rickandmortyapi.com/api/character/")!
-        let sut = URLSessionHTTPClient(session: URLSession.shared)
+        let sut = URLSessionHTTPClient.shared
         
         let exp = expectation(description: "Wait for request")
         sut.get(from: url) { response in
@@ -36,7 +36,7 @@ class URLSessionHTTPClientTest: XCTestCase {
         let url = URL(string: "https://rickandmortyapi.com/api/character")!
         let pageNumber = 3
         let expectedURL = URL(string: "https://rickandmortyapi.com/api/character/?page=3")!
-        let sut = URLSessionHTTPClient(session: URLSession.shared)
+        let sut = URLSessionHTTPClient.shared
         
         let exp = expectation(description: "Wait for request")
         sut.get(from: url, forPage: pageNumber) { response in

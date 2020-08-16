@@ -9,14 +9,20 @@
 import Foundation
 
 class CharactersViewModel {
-    let api = RickAndMortyAPI(with: URLSessionHTTPClient.shared)
+    // MARK: - Public properties
     public var characters = [RickAndMortyCharacter]()
-    private var currentPage = 1
     
+    // MARK: CharactersViewModel closure handlers
     public var handleCharactersLoaded: (() -> Void)?
     public var handleNoConnectivityError: (() -> Void)?
     public var handleInvalidDataError: (() -> Void)?
     
+    
+    // MARK: Private properties
+    private let api = RickAndMortyAPI(with: URLSessionHTTPClient.shared)
+    private var currentPage = 1
+    
+    // MARK: - Loading characters methods
     public func loadNextCharactersPage() {
         loadCharacters(forPage: currentPage)
         currentPage += 1
