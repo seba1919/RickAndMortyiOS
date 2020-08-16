@@ -16,13 +16,12 @@ class CharactersViewModel {
     public var loadError: (() -> Void)?
     
     public func loadNextCharactersPage() {
-        getCharacters(forPage: currentPage)
+        loadCharacters(forPage: currentPage)
         currentPage += 1
     }
     
-    private func getCharacters(forPage pageNumber: Int) {
-        let url = URL(string: "https://rickandmortyapi.com/api/character")!
-        let api = RickAndMortyAPI(with: URLSessionHTTPClient(session: URLSession.shared))
+    private func loadCharacters(forPage pageNumber: Int) {
+        let api = RickAndMortyAPI(with: URLSessionHTTPClient.shared)
         api.getCharacters(forPage: pageNumber) { [weak self] result in
             switch result {
             case let .success(characters):

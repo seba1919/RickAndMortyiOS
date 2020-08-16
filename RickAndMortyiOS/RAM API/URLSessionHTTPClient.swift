@@ -17,12 +17,10 @@ private struct UnexpectedValuesRepresentation: Error {}
 
 public class URLSessionHTTPClient: HTTPClient {
     
-    private let session: URLSession
+    public static let shared = URLSessionHTTPClient()
+    private let session = URLSession.shared
 
-
-    public init(session: URLSession) {
-        self.session = session
-    }
+    private init() {}
     
     public func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) {
         
