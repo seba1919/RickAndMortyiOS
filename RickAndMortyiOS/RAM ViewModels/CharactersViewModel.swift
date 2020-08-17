@@ -20,8 +20,12 @@ class CharactersViewModel {
     
     
     // MARK: Private properties
-    private let api = RickAndMortyAPI(with: URLSessionHTTPClient.shared)
+    private let characterLoader: CharacterLoader
     private var currentPage = 1
+    
+    init(with characterLoaderr: CharacterLoader) {
+        self.characterLoader = characterLoaderr
+    }
     
     // MARK: - Loading characters methods
     public func loadNextCharactersPage() {
@@ -30,7 +34,7 @@ class CharactersViewModel {
     }
     
     private func loadCharacters(forPage pageNumber: Int) {
-            api.getCharacters(forPage: pageNumber) { [weak self] result in
+            characterLoader.getCharacters(forPage: pageNumber) { [weak self] result in
                 switch result {
                 case let .success((newCharacters, amount)):
                     self?.characters.append(contentsOf: newCharacters)

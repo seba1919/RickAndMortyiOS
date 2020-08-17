@@ -1,5 +1,5 @@
 //
-//  RickAndMortyAPI.swift
+//  RickAndMortyRemoteLoader.swift
 //  RickAndMortyiOS
 //
 //  Created by Sebastian Wiatrzyk on 15/08/2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class RickAndMortyAPI: CharacterLoader {
+public class RickAndMortyRemoteLoader: CharacterLoader {
     let client: HTTPClient
     let baseURL = URL(string: "https://rickandmortyapi.com/api/character/")!
     
@@ -23,7 +23,7 @@ public class RickAndMortyAPI: CharacterLoader {
         client.get(from: baseURL, forPage: pageNumber) { result in
             switch result {
             case let .success((data, response)):
-                completion(RickAndMortyAPI.map(data, from: response))
+                completion(RickAndMortyRemoteLoader.map(data, from: response))
             case .failure:
                 completion(.failure(LoaderError.connectivity))
             }

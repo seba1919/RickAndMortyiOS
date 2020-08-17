@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let window = UIWindow(windowScene: windowScene)
         
-        let viewModel = CharactersViewModel()
+        let viewModel = CharactersViewModel(with: RickAndMortyRemoteLoader(with: URLSessionHTTPClient.shared))
         let viewController = CharactersListViewController(with: viewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
 
